@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<title>blogdown: Demo blog</title> 		
+		<link href="/public/prettify/prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="/public/prettify/prettify.js"></script>
+        <style>
+        pre {
+            border: 1px solid silver;
+            padding: 4px;
+        }
+        div#header {
+            text-align: center;
+        }
+        div#articles {
+            border-top: 1px solid silver;
+            border-bottom: 1px solid silver;
+        }
+        div#blog_post, div#articles {
+            width: 700px;
+            margin: 0 auto;
+        }
+        span.date {
+            margin-left: 10px;
+            color: gray;
+        }
+        </style>
+	</head> 
+	<body onload="prettyPrint()">
+	    <div id="header">
+	        <h1>blogdown: Demo blog</h1>
+    	</div>
+    	<div id="articles">
+    	    <h3>Articles</h3>
+    	    <ul>
+		        <% for(var i=0; i<articles.length; i++) {%>
+                   <li><a href="/b/<%= articles[i].slug %>/"><%= articles[i].title %></a><span class="date"><%= formatDate(articles[i].date) %></span></li>
+                <% } %>
+		    </ul>
+    	</div>
+    	<div id="content">
+    	    <div id="blog_post">
+    	        <h2><%= post.title %></h2>
+    	        <h4><em><%= post.author %></em> <%= formatDate(post.date) %></h4>
+    	        <%- post.body %>
+    	    </div>
+    	</div>
+	</body> 
+</html>
